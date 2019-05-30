@@ -28,13 +28,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $role = Auth::user()->adminFlag;
+        $role = Auth::user()->adminFlag;//管理者権限確認
+
         if ($role == 0){
-            $page = DB::table('que')->select('title','question')->get();
-            return view('home',compact('page'));
+            //利用者サイド
+            $user = Auth::user()->user_id;//ログインユーザのID取得
+            $page = DB::table('que')->where('que_user',$user)->get(); //ユーザの質問情報のみ表示
+
+            return view('home',compact('page'));//利用者ページへ
         }else {
-            $page = DB::table('que')->select('id','title','question')->get();
-            return view('adminhome',compact('page'));
+            //管理者サイド
+            $page = DB::table('que')->get();//queテーブルを一括表示
+
+            return view('adminhome',compact('page'));//管理者ページへ
         }
     }
 
@@ -60,11 +66,13 @@ class HomeController extends Controller
 
         $title = $request->input('title');
         $question = $request->input('question');
+        $user = Auth::user()->user_id;
         $flag = 0;
 
         DB::table('que')->insert([
             'title' => $title,
             'question' => $question,
+            'que_user' => $user,
             'flag' => $flag,
         ]);
 

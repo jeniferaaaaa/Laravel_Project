@@ -17,6 +17,7 @@ class CreateQueTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('question');
+            $table->string('que_user');
             $table->string('answer')->nullable();
             $table->tinyInteger('flag');
             $table->timestamps();
