@@ -34,7 +34,15 @@
                             <label for="question" class="col-md-4 col-form-label text-md-right">{{ __('質問内容') }}</label>
 
                             <div class="col-md-6">
-                                <label id="question" type="textarea" class="form-control" name="question" >{{$val->question}}</label>
+                                <label id="question" type="text" class="form-control" name="question" >{{$val->question}}</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="que_user" class="col-md-4 col-form-label text-md-right">{{ __('質問者') }}</label>
+
+                            <div class="col-md-6">
+                                <label id="que_user" type="text" class="form-control" name="que_user" >{{$val->que_user}}</label>
                             </div>
                         </div>
                         @endforeach
@@ -56,7 +64,6 @@
 
                             <div class="col-md-8 offset-md-4">
                             　　<a type="button" class="btn btn-primary" href="javascript:history.back();">戻る</a>
-                                </a>
 
                                 <button type="submit" class="btn btn-primary">
                                 {{ __('回答を送信') }}

@@ -50,10 +50,15 @@
                                 </li>
                             @endif
                         @else
+                            @if ( Auth::user()->adminFlag == 1)
+                            <li class="nav-item">
+                                <label class="nav-link">{{ __('管理者モード') }}</label>
+                            </li>
+                            @else
 　　                        <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/admin') }}">{{ __('管理権限申請') }}</a>
                             </li>
-
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     ログイン中：{{ Auth::user()->user_id }} <span class="caret"></span>

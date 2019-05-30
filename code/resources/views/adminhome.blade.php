@@ -29,7 +29,11 @@
                                     <td width="30%">件名：{{ $val->title }}</td>
                                     <td width="63%">内容：{{ $val->question }}</td>
                                     <input type="hidden" name="id" value="{{ $val->id }}">
-                                    <td width="7%"><button type="submit" class="btn btn-primary">{{ __('回答する') }}</button></td>               
+                                    @if ($val->flag == 0)
+                                    <td width="7%"><button type="submit" class="btn btn-primary">{{ __('回答する') }}</button></td>
+                                    @else
+                                    <td width="7%"><button type="submit" class="btn btn-primary" disabled>{{ __('回答済み') }}</button></td>
+                                    @endif
                                 </tr>
                                 </table>
                             </div>
