@@ -28,7 +28,20 @@
                             <tr>
                                 <td width="30%">件名：{{ $val->title }}</td>
                                 <td width="70%">内容：{{ $val->question }}</td>
+                                @if ( $val->answer != '')
                             </tr>
+                            <tr>
+                                <td width="30%">ステータス：回答あり</td>
+                                <td width="70%">回答内容：{{ $val->answer }}</td>
+                            </tr>
+                                @else
+                            </tr>
+                            <tr>
+                                <td width="30%">ステータス：回答なし</td>
+                                <td width="70%"></td>
+                            </tr>
+
+                                @endif                            
                             </table>
                         </div>
                         @endforeach
